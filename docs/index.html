@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battery Health & RUL Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Battery Health &amp; Remaining Useful Life</h1>
+      <p class="subtitle">NASA PCoE lithium-ion cells B0005 to B0018 &middot; 1BET307 Data Analytics</p>
+    </div>
+    <select id="batterySelect" aria-label="Select battery"></select>
+  </header>
+
+  <main>
+    <section class="cards">
+      <article class="card">
+        <span class="label">Latest capacity</span>
+        <span class="value" id="latestCapacity">--</span>
+        <span class="unit">Ah</span>
+      </article>
+      <article class="card">
+        <span class="label">State of health</span>
+        <span class="value" id="latestSoh">--</span>
+        <span class="unit">%</span>
+      </article>
+      <article class="card">
+        <span class="label">Current cycle</span>
+        <span class="value" id="currentCycle">--</span>
+      </article>
+      <article class="card accent">
+        <span class="label">Estimated RUL</span>
+        <span class="value" id="rul">--</span>
+        <span class="unit">cycles</span>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Capacity degradation</h2>
+      <canvas id="capacityChart"></canvas>
+    </section>
+
+    <section class="panel">
+      <h2>State of health across all cells</h2>
+      <canvas id="sohChart"></canvas>
+    </section>
+
+    <section class="panel">
+      <h2>Analytics workflow</h2>
+      <ol class="stages">
+        <li><span>1</span> Question</li>
+        <li><span>2</span> Collection</li>
+        <li><span>3</span> Cleansing</li>
+        <li><span>4</span> Transformation</li>
+        <li><span>5</span> Modelling</li>
+        <li><span>6</span> Visualization</li>
+        <li><span>7</span> Insight &amp; decision</li>
+      </ol>
+      <p class="note" id="insight"></p>
+    </section>
+  </main>
+
+  <footer>
+    Data: NASA Prognostics Center of Excellence battery dataset. Built with HTML, CSS and Chart.js.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
